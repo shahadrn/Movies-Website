@@ -46,7 +46,64 @@ const movieInfobyId = (data) => {
     // to get Overview
     desc.innerHTML = data.overview.substring(0, 160) + "...";
 
-    backdrop.style.backgroundImage= `url(${original_imgUrl}${data.backdrop_path})`
+    backdrop.style.backgroundImage= `url(${original_imgUrl}${data.backdrop_path})`;
+
+    // let fav = document.querySelector('.addFav');
+    // fav.addEventListener('click' , () => {
+    //     fav.innerHTML = `<svg 
+    //         onclick="movieSeleced(${data.id})"
+    //         xmlns="http://www.w3.org/2000/svg" 
+    //         class="h-6 w-6" fill="red" 
+    //         viewBox="0 0 24 24" 
+    //         stroke="currentColor">
+    //         <path stroke-linecap="round" 
+    //         stroke-linejoin="round" 
+    //         stroke-width="2" 
+    //         d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+    //         </svg>`;
+
+    // });
+    // console.log(typeof fav);
+
+    const fav = document.querySelector('.addFav');
+    fav.innerHTML = `<svg 
+    onclick="movieSeleced(${data.id})"
+    xmlns="http://www.w3.org/2000/svg" 
+    class="h-6 w-6" fill="none" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor">
+    <path stroke-linecap="round" 
+    stroke-linejoin="round" 
+    stroke-width="2" 
+    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+    </svg>`;
+}
+
+const movieSeleced  = (id) => {
+    localStorage.setItem('MovieID', id);
+    window.location = 'favorite.html';
+    return false;
+
+}
+
+const getFav = () => {
+    const favMoiveChoice = localStorage.getItem('MovieID');
+
+    axios(`${movie_tr}${favMoiveChoice}?` + new URLSearchParams({
+        api_key : api_key
+    }))
+    .then(res => res.data)
+    .then(data => {
+        console.log(data);
+        const cardMovie = document.querySelector('.fav-container');
+        cardMovie.innerHTML +=`
+        <div class="moviebyId"> 
+            <img src="${imgUrl}${data.backdrop_path}" class="imgLikeThis"  alt="">
+            <p class="moive-title mb-10">${data.title}</p>
+        </div>
+        `;
+    } )
+
 
 }
 
@@ -64,9 +121,7 @@ axios(`${movie_tr}${movieId}/credits?` + new URLSearchParams({
     const cast = document.querySelector('.cast');
     for(let i = 0 ; i < 5 ; i++){
         cast.innerHTML +=`
-        <span>${data.cast[i].name + formatString(i , 5)}</span>
-       `
-         
+        <span>${data.cast[i].name + formatString(i , 5)}</span>`;   
     }
 })
 
@@ -103,12 +158,12 @@ axios(`${movie_tr}${movieId}/videos?` + new URLSearchParams({
 
 
 //Get recommendations.
-axios(`${movie_tr}${movieId}//recommendations?` + new URLSearchParams({
+axios(`${movie_tr}${movieId}/recommendations?` + new URLSearchParams({
     api_key : api_key
 }))
 .then(res => res.data)
 .then(data => {
-    console.log(data);
+    console.log(`recommendations`,data);
     let moreLike = document.querySelector('.recommendation-container');
     for (let i = 0 ; i < 10 ; i++) {
         if(data.results[i].backdrop_path == null ) {
@@ -118,9 +173,12 @@ axios(`${movie_tr}${movieId}//recommendations?` + new URLSearchParams({
         <div class="moviebyId" onclick="location.href = '/${data.results[i].id}'"> 
             <img src="${imgUrl}${data.results[i].backdrop_path}" class="imgLikeThis"  alt="">
             <p class="moive-title mb-10">${data.results[i].title}</p>
-        </div> 
-        
-        `;
+        </div>`;
     }
 })
 
+
+
+
+    
+    

@@ -13,7 +13,7 @@
 
 
     .main{
-        @apply relative w-full p-20
+        @apply relative w-full p-10
     }
 
     .movie-list {
@@ -47,12 +47,12 @@
   
     .pre-btn,
     .nxt-btn {
-        @apply absolute h-40 top-1/4 -translate-y-1/4 w-11 text-red-700 opacity-0
+        @apply absolute h-40 top-1/4 -translate-y-1/4 w-11 text-red-700 opacity-0 font-bold
   
     }
   
     .pre-btn {
-        @apply -left-12
+        @apply -left-10
     }
     .nxt-btn {
       @apply -right-12
@@ -68,7 +68,7 @@
   }
 
   .movie-detail {
-      @apply  h-full flex flex-col justify-end text-gray-900 pt-64 
+      @apply  h-full flex flex-col justify-end text-gray-900 pt-56
   }
 
   /* .conInfo {
@@ -83,7 +83,7 @@
   }
 
   .desc {
-      @apply w-3/4 italic font-semibold text-white bg-black bg-opacity-30 p-3 m-10 rounded  ml-7 
+      @apply w-3/4 italic font-semibold text-white bg-black bg-opacity-30 p-3 m-5 rounded  ml-7 
   }
 
   .cast span {
