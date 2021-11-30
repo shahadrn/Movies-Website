@@ -1,0 +1,136 @@
+/* ./your-css-folder/styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.center {
+    @apply  flex justify-center items-center;
+}
+
+
+@layer components {
+
+
+
+    .main{
+        @apply relative w-full p-20
+    }
+
+    .movie-list {
+        @apply w-full h-96 mt-10 relative pb-36
+    }
+  
+    .movie-category {
+        @apply text-xl font-bold mt-10 capitalize
+    }
+  
+    .movieContainer {
+        @apply w-full h-80 flex overflow-x-auto overflow-y-hidden scroll-smooth
+    }
+  
+    .movieContainer::-webkit-scrollbar {
+        @apply hidden
+  
+    }
+  
+    .movie {
+        @apply flex-auto mr-3 w-full cursor-pointer relative 
+    }
+  
+    .movie img {
+        @apply object-cover rounded w-full h-48 
+    }
+  
+    .movie p {
+        @apply  overflow-hidden font-semibold px-16  text-red-700 
+    }
+  
+    .pre-btn,
+    .nxt-btn {
+        @apply absolute h-40 top-1/4 -translate-y-1/4 w-11 text-red-700 opacity-0
+  
+    }
+  
+    .pre-btn {
+        @apply -left-12
+    }
+    .nxt-btn {
+      @apply -right-12
+  }
+  
+  .nxt-btn:hover,
+  .pre-btn:hover {
+      @apply opacity-95
+  }
+
+  .movie-info {
+      @apply w-full bg-no-repeat bg-cover opacity-95
+  }
+
+  .movie-detail {
+      @apply  h-full flex flex-col justify-end text-gray-900 pt-64 
+  }
+
+  /* .conInfo {
+      @apply bg-black opacity-30 p-4 rounded
+  } */
+  .movie-name {
+      @apply text-4xl font-bold ml-7 text-white
+  }
+
+  .genres {
+      @apply my-5  ml-7 text-white
+  }
+
+  .desc {
+      @apply w-3/4 italic font-semibold text-white bg-black bg-opacity-30 p-3 m-10 rounded  ml-7 
+  }
+
+  .cast span {
+      @apply opacity-90 ml-7 text-white  font-bold
+  }
+
+  .trailer-container{
+      @apply pt-32 mb-11 flex flex-wrap
+ }
+
+.heading {
+    @apply pl-10 text-3xl font-bold pb-10
+}
+
+h3 {
+    @apply p-3 text-4xl text-yellow-300 font-bold bg-gray-900 rounded-lg
+}
+
+
+  iframe {
+    @apply w-96 h-52 mt-12 p-2 rounded
+  }
+
+  .recommendation {
+    @apply pt-16 mb-8
+ }
+  
+  .recommendation-container {
+      @apply w-full flex flex-wrap mb-3
+  }
+
+   .moviebyId {
+       @apply flex flex-wrap m-5 w-96 h-52 
+
+    }
+
+    .imgLikeThis {
+        @apply  relative rounded-lg border-2 border-gray-300 hover:border-transparent
+    }
+    .moviebyId p {
+        @apply absolute pb-2 h-8 rounded-lg leading-7 text-center w-96 font-semibold
+    }
+    .moviebyId:hover p {
+    @apply absolute pb-2 h-8 rounded-lg leading-7 text-white bg-black bg-opacity-20 text-center w-96 font-semibold
+    }
+  
+
+  }
+  
+  
