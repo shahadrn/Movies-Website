@@ -24,12 +24,13 @@ const movieInfobyId = (data) => {
     const desc = document.querySelector('.desc');
     const title = document.querySelector('title');
     const backdrop = document.querySelector('.movie-info');
+    const vote = document.querySelector('.vote');
 
     title.innerHTML = movieName.innerHTML = data.title; // to change Title based on the user's choice
     genres.innerHTML = `${data.release_date.split('-')[0]} | `; //to Get release Year
     for(let i = 0 ; i < data.genres.length ; i ++){
         genres.innerHTML +=  data.genres[i].name + formatString(i , data.genres.length);
-    }
+    } // genres type
 
 
     // to Ckeck if Suitable for kids or not
@@ -38,6 +39,9 @@ const movieInfobyId = (data) => {
     } else {
         genres.innerHTML += ' | +16';
     }
+
+    //genres.style.backgroundColor= 'red';
+    vote.innerHTML +=`  ${data.vote_average} `
 
     if (data.backdrop_path == null ){
         data.backdrop_path = data.poster_path;
@@ -48,35 +52,14 @@ const movieInfobyId = (data) => {
 
     backdrop.style.backgroundImage= `url(${original_imgUrl}${data.backdrop_path})`;
 
-    // let fav = document.querySelector('.addFav');
+    // const fav = document.querySelector('.addFav');
     // fav.addEventListener('click' , () => {
-    //     fav.innerHTML = `<svg 
-    //         onclick="movieSeleced(${data.id})"
-    //         xmlns="http://www.w3.org/2000/svg" 
-    //         class="h-6 w-6" fill="red" 
-    //         viewBox="0 0 24 24" 
-    //         stroke="currentColor">
-    //         <path stroke-linecap="round" 
-    //         stroke-linejoin="round" 
-    //         stroke-width="2" 
-    //         d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-    //         </svg>`;
+    
+    // fav.innerHTML = `<button type="button" onclick="movieSeleced(${data.id})">MY LIST+</button>`;
+    // })
 
-    // });
-    // console.log(typeof fav);
-
-    const fav = document.querySelector('.addFav');
-    fav.innerHTML = `<svg 
-    onclick="movieSeleced(${data.id})"
-    xmlns="http://www.w3.org/2000/svg" 
-    class="h-6 w-6" fill="none" 
-    viewBox="0 0 24 24" 
-    stroke="currentColor">
-    <path stroke-linecap="round" 
-    stroke-linejoin="round" 
-    stroke-width="2" 
-    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-    </svg>`;
+    const fav = document.querySelector('.addFav');    
+    fav.innerHTML = `<button type="button" onclick="movieSeleced(${data.id})">MY LIST+</button>`;
 }
 
 const movieSeleced  = (id) => {
@@ -133,7 +116,7 @@ axios(`${movie_tr}${movieId}/videos?` + new URLSearchParams({
 .then(res => res.data)
 .then(data => {
     console.log(`movieTrailer`,data);
-    const trailerVideo = document.querySelector('.trailer-container');
+    const trailerVideo = document.querySelector('.trailer-movie');
     const mxVideo = (data.results.length > 3) ? 3 : data.results.length;
 
     if (data.results.length == 0 ){

@@ -13,15 +13,15 @@
 
 
     .main{
-        @apply relative w-full p-10
+        @apply relative w-full p-11
     }
 
     .movie-list {
-        @apply w-full h-96 mt-10 relative pb-36
+        @apply w-full h-96 mt-10 relative
     }
   
     .movie-category {
-        @apply text-xl font-bold mt-10 capitalize
+        @apply text-xl font-bold mt-10 capitalize mb-3
     }
   
     .movieContainer {
@@ -34,7 +34,7 @@
     }
   
     .movie {
-        @apply flex-auto mr-3 w-full cursor-pointer relative 
+        @apply flex-auto mr-3 cursor-pointer relative 
     }
   
     .movie img {
@@ -42,7 +42,7 @@
     }
   
     .movie p {
-        @apply  overflow-hidden font-semibold px-16  text-red-700 
+        @apply  font-semibold px-16 text-black
     }
   
     .pre-btn,
@@ -55,7 +55,7 @@
         @apply -left-10
     }
     .nxt-btn {
-      @apply -right-12
+      @apply -right-10
   }
   
   .nxt-btn:hover,
@@ -83,51 +83,55 @@
   }
 
   .desc {
-      @apply w-3/4 italic font-semibold text-white bg-black bg-opacity-30 p-3 m-5 rounded  ml-7 
+      @apply w-3/4 italic font-semibold text-white bg-black bg-opacity-30 p-3 m-5 rounded  ml-5 
   }
 
   .cast span {
-      @apply opacity-90 ml-7 text-white  font-bold
+      @apply opacity-90 ml-8 text-white  font-bold
   }
 
-  .trailer-container{
-      @apply pt-32 mb-11 flex flex-wrap
- }
+
+
+ .trailer-movie{
+    @apply container mx-auto md:flex
+}
+
+
 
 .heading {
-    @apply pl-10 text-3xl font-bold pb-10
+    @apply pl-10 text-3xl font-bold mt-5
 }
 
 h3 {
-    @apply p-3 text-4xl text-yellow-300 font-bold bg-gray-900 rounded-lg
+    @apply p-3 text-4xl text-white font-bold bg-gray-900 rounded-lg
 }
 
 
   iframe {
-    @apply w-96 h-52 mt-12 p-2 rounded
+    @apply flex-1 h-96 w-full  mt-2 p-2 
   }
 
   .recommendation {
-    @apply pt-16 mb-8
+    @apply pt-16 
  }
   
   .recommendation-container {
-      @apply w-full flex flex-wrap mb-3
+      @apply w-full flex flex-wrap mt-5
   }
 
    .moviebyId {
-       @apply flex flex-wrap m-5 w-96 h-52 
+       @apply flex pl-12 mb-3
 
     }
 
     .imgLikeThis {
-        @apply  relative rounded-lg border-2 border-gray-300 hover:border-transparent
+        @apply  relative rounded-md w-96 h-52 
     }
     .moviebyId p {
-        @apply absolute pb-2 h-8 rounded-lg leading-7 text-center w-96 font-semibold
+        @apply absolute pb-2 h-8 rounded-md leading-7 text-center w-96 font-semibold
     }
     .moviebyId:hover p {
-    @apply absolute pb-2 h-8 rounded-lg leading-7 text-white bg-black bg-opacity-20 text-center w-96 font-semibold
+    @apply absolute pb-2 h-8 rounded-md leading-7 text-white bg-black bg-opacity-20 text-center w-96 font-semibold
     }
   
 
