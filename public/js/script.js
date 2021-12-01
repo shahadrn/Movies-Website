@@ -20,11 +20,12 @@ axios(genresList + new URLSearchParams({
       });
   });
 
+
   const axiosMoviesList = (id , genres) => {
       axios(movieGenres + new URLSearchParams({
           api_key : api_key,
           with_genres : id,
-          page : Math.floor(Math.random() * 3)  + 1
+          //page : Math.floor(Math.random() * 3)  + 1
       }))
       .then(res =>  res.data)
       .then(data => {
@@ -43,7 +44,6 @@ const makeCategories = (category , data) => {
         </button>
         <h2 class="movie-category">${category.split("_").join(" ")}</h2>
         <div class="movieContainer" id=${category}>
-          
         </div>
 
         <button class="nxt-btn"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,6 +82,25 @@ const makeCategories = (category , data) => {
         })
     }
 
+
+    // axios(movieGenres + new URLSearchParams({
+    //     api_key : api_key
+    // }))
+    // .then(res =>  res.data)
+    //   .then(data => {
+    //       console.log(`imgBack`,data.results)
+
+    //       //data.results = Math.floor(Math.random() * 3)  + 1;
+    //       const dd = data.results[0] 
+    //       console.log(`dfgh`,dd)
+
+          
+    //           bck = document.querySelector('.backg');
+             
+    //           dd.bck.innerHTML += `<img src="${imgUrl}${item.backdrop_path}" class="w-full h-96 flex center" />`;
+              
+          
+    //   });
 
 
 

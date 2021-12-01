@@ -27,7 +27,20 @@ const movieInfobyId = (data) => {
     const vote = document.querySelector('.vote');
 
     title.innerHTML = movieName.innerHTML = data.title; // to change Title based on the user's choice
-    genres.innerHTML = `${data.release_date.split('-')[0]} | `; //to Get release Year
+
+    var today = new Date();
+    var year = today.getFullYear();
+
+    //console.log(data.release_date.split('-')[0] );
+
+    // check newst Movie
+    if(data.release_date.split('-')[0] == year){
+        genres.innerHTML = `${data.release_date.split('-')[0]} new | `; //to Get release Year
+    } else {
+        genres.innerHTML = `${data.release_date.split('-')[0]} | `; //to Get release Year
+    }
+
+
     for(let i = 0 ; i < data.genres.length ; i ++){
         genres.innerHTML +=  data.genres[i].name + formatString(i , data.genres.length);
     } // genres type
