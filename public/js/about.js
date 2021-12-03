@@ -11,14 +11,15 @@ console.log(movieId);
 axios(`${movie_tr}${movieId}?` + new URLSearchParams({
     api_key : api_key
 }))
-.then(res => res.data)
-.then(data => {
-    console.log(`movieId`, data);
-    movieInfobyId(data);
+.then(res => {
+    res.data
+    console.log(`movieId`, res.data);
+    movieInfobyId(res.data);
 })
+.catch(err => console.log(err));
+
 
 const movieInfobyId = (data) => {
-
     const movieName = document.querySelector('.movie-name');
     const genres = document.querySelector('.genres');
     const desc = document.querySelector('.desc');
@@ -61,7 +62,7 @@ const movieInfobyId = (data) => {
     }
 
     // to get Overview
-    desc.innerHTML = data.overview.substring(0, 160) + "...";
+    desc.innerHTML = data.overview.substring(0, 200) + "...";
 
     backdrop.style.backgroundImage= `url(${original_imgUrl}${data.backdrop_path})`;
 
@@ -88,38 +89,36 @@ const getFav = () => {
     axios(`${movie_tr}${favMoiveChoice}?` + new URLSearchParams({
         api_key : api_key
     }))
-    .then(res => res.data)
-    .then(data => {
-        console.log(data);
+    .then(res => {
+        console.log(res.data);
         const cardMovie = document.querySelector('.fav-container');
         cardMovie.innerHTML +=`
         <div class="moviebyId"> 
-            <img src="${imgUrl}${data.backdrop_path}" class="imgLikeThis"  alt="">
-            <p class="moive-title mb-10">${data.title}</p>
+            <img src="${imgUrl}${res.data.backdrop_path}" class="imgLikeThis"  alt="">
+            <p class="moive-title mb-10">${res.data.title}</p>
         </div>
         `;
-    } )
-
-
+    })
+    .catch(err => console.log(err));
 }
 
 const formatString = (cureentInx , maxInx) => {
-    return (cureentInx == maxInx - 1) ? '..' : ', ';
+    return (cureentInx == maxInx - 1) ? '.' : ', ';
 }
 
 //Get the cast and crew for a movie.
 axios(`${movie_tr}${movieId}/credits?` + new URLSearchParams({
     api_key : api_key
 }))
-.then(res => res.data)
-.then(data => {
-    console.log(`cast`, data);
+.then(res => {
+    res.data
+    console.log(`cast`,  res.data);
     const cast = document.querySelector('.cast');
     for(let i = 0 ; i < 5 ; i++){
         cast.innerHTML +=`
-        <span>${data.cast[i].name + formatString(i , 5)}</span>`;   
+        <span>${res.data.cast[i].name + formatString(i , 5)}</span>`;
     }
-})
+}).catch(err => console.log(err));
 
 
 //Get the cast and crew for a movie.

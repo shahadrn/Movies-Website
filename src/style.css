@@ -34,7 +34,7 @@
     }
   
     .movie {
-        @apply flex-auto mr-3 cursor-pointer relative 
+        @apply flex-auto mr-3 cursor-pointer relative  
     }
   
     .movie img {
@@ -47,7 +47,7 @@
   
     .pre-btn,
     .nxt-btn {
-        @apply absolute h-40 top-1/4 -translate-y-1/4 w-11 text-red-700 opacity-0 font-bold
+        @apply absolute h-40 top-1/4 -translate-y-1/4 w-11 text-red-700 opacity-0 font-bold 
   
     }
   
@@ -60,7 +60,7 @@
   
   .nxt-btn:hover,
   .pre-btn:hover {
-      @apply opacity-95
+      @apply opacity-95 border-none outline-none
   }
 
   .movie-info {
