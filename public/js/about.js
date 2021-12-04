@@ -27,7 +27,7 @@ const movieInfobyId = (data) => {
     const backdrop = document.querySelector('.movie-info');
     const vote = document.querySelector('.vote');
 
-    title.innerHTML = movieName.innerHTML = data.title; // to change Title based on the user's choice
+    title.textContent = movieName.innerHTML = data.title; // to change Title based on the user's choice
 
     var today = new Date();
     var year = today.getFullYear();
@@ -36,33 +36,33 @@ const movieInfobyId = (data) => {
 
     // check newst Movie
     if(data.release_date.split('-')[0] == year){
-        genres.innerHTML = `${data.release_date.split('-')[0]} new | `; //to Get release Year
+        genres.textContent = `${data.release_date.split('-')[0]} new | `; //to Get release Year
     } else {
-        genres.innerHTML = `${data.release_date.split('-')[0]} | `; //to Get release Year
+        genres.textContent = `${data.release_date.split('-')[0]} | `; //to Get release Year
     }
 
 
     for(let i = 0 ; i < data.genres.length ; i ++){
-        genres.innerHTML +=  data.genres[i].name + formatString(i , data.genres.length);
+        genres.textContent +=  data.genres[i].name + formatString(i , data.genres.length);
     } // genres type
 
 
     // to Ckeck if Suitable for kids or not
     if (data.adult == true){
-        genres.innerHTML += ' | +18';
+        genres.textContent += ' | +18';
     } else {
-        genres.innerHTML += ' | +16';
+        genres.textContent += ' | +16';
     }
 
     //genres.style.backgroundColor= 'red';
-    vote.innerHTML +=`  ${data.vote_average} `
+    vote.textContent +=`${data.vote_average}`
 
     if (data.backdrop_path == null ){
         data.backdrop_path = data.poster_path;
     }
 
     // to get Overview
-    desc.innerHTML = data.overview.substring(0, 200) + "...";
+    desc.textContent = data.overview.substring(0, 200) + "...";
 
     backdrop.style.backgroundImage= `url(${original_imgUrl}${data.backdrop_path})`;
 
@@ -115,8 +115,8 @@ axios(`${movie_tr}${movieId}/credits?` + new URLSearchParams({
     console.log(`cast`,  res.data);
     const cast = document.querySelector('.cast');
     for(let i = 0 ; i < 5 ; i++){
-        cast.innerHTML +=`
-        <span>${res.data.cast[i].name + formatString(i , 5)}</span>`;
+        cast.textContent +=`
+        ${res.data.cast[i].name + formatString(i , 5)}`;
     }
 }).catch(err => console.log(err));
 

@@ -86,7 +86,7 @@
       @apply w-3/4 italic font-semibold text-white  p-3 m-5 rounded  ml-5 
   }
 
-  .cast span {
+  .cast  {
       @apply opacity-90 ml-8 text-white  font-bold
   }
 

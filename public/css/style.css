@@ -775,7 +775,7 @@ video {
   color: rgba(255, 255, 255, var(--tw-text-opacity))
 }
 
-.cast span {
+.cast  {
   margin-left: 2rem;
   font-weight: 700;
   --tw-text-opacity: 1;

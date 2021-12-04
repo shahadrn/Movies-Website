@@ -32,8 +32,12 @@ const axiosMoviesList = (id, genres) => {
     .catch(err => console.log(err));
 }
 
+const moviecategory = document.querySelector('.movie-category');
+const movieContainer = document.querySelector('.movieContainer')
 // categories section
 const makeCategories = (category, data) => {
+
+    
     main.innerHTML += `
     <div class="movie-list">
         <button class="pre-btn"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
