@@ -20,6 +20,8 @@ favoritesTable.addEventListener('click', (e) => {
         //console.log(e.target.parentElement.parentElement);
         removeFavorites(e.target.parentElement.parentElement);
 
+        //Remove from LocalStorage
+        removeFromLS(e.target.getAttribute('data-id'));
 
     }
 })
@@ -30,17 +32,32 @@ function removeFavorites(element) {
 }
 
 
-function isFav(){
-    const movies = getfromLS();
-    movies.forEach(movie => {
-        let {id} = movie;
-        let favoritesMovies =  document.querySelector(`[data-id=${id}]`);
-        if (favoritesMovies){
-            favoritesMovies.classList.add('is-fav');
-            favoritesMovies.textContent ='MY LIST-';
+// function isFav(){
+//     const movies = getfromLS();
+//     movies.forEach(movie => {
+//         let {id} = movie;
+//         let favoritesMovies =  document.querySelector(`[data-id=${id}]`);
+//         if (favoritesMovies){
+//             favoritesMovies.classList.add('is-fav');
+//             favoritesMovies.textContent ='MY LIST-';
+//         }
+//     })
+// }
+
+//Remove movie from lcoalStorage
+function removeFromLS(id) {
+
+    const movies = this.getfromLS();
+    //loop
+    movies.forEach((movie, index) => {
+        if (id === movie.id) {
+            movies.splice(index, 1);
         }
-    })
+    });
+    //set Array into localStorage
+    localStorage.setItem('movies', JSON.stringify(movies));
 }
+
 
 
 function displayFavorites(favorites) {
