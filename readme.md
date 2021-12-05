@@ -19,12 +19,8 @@ A simple movies website, If you like movies, this website will be useful to you,
 - Display All Movies information( title, Poster, publisher... etc) on Front End Cards.
 - Categorize Movies into Categories.
 - Allow users to Search for Movies by name.
-- Allow users to rating movies.
-- Allow users to remove rating of movies.
 - Allow users to add movies into favorite list.
 - Allow users to remove movies from favorite list.
-- Allow users to add movies into watch later list.
-- Allow users to remove movies from watch later list.
 
 
 
