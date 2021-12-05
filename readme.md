@@ -23,4 +23,11 @@ A simple movies website, If you like movies, this website will be useful to you,
 - Allow users to remove movies from favorite list.
 
 
+![1](https://user-images.githubusercontent.com/70979180/144763859-8f6af187-9c85-4567-bb39-68b00b6049d3.jpg)
+![2](https://user-images.githubusercontent.com/70979180/144763883-0a0194ad-a810-4143-ab7b-e16a79e6a584.jpg)
+![3](https://user-images.githubusercontent.com/70979180/144763887-2e697aaf-4038-4e4f-834d-1ff2cbb26be1.jpg)
+![4](https://user-images.githubusercontent.com/70979180/144763892-f98e5463-992a-4066-94dc-4b4304257712.jpg)
+
+
+
 
