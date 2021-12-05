@@ -72,35 +72,76 @@ const movieInfobyId = (data) => {
     // fav.innerHTML = `<button type="button" onclick="movieSeleced(${data.id})">MY LIST+</button>`;
     // })
 
+    
+
+
     const fav = document.querySelector('.addFav');    
-    fav.innerHTML = `<button type="button" onclick="movieSeleced(${data.id})">MY LIST+</button>`;
+    fav.innerHTML += `
+    <button type="button" data-id="${data.id}" class=" mb-1 bg-red-700 text-white w-24 h-8 font-normal center hover:text-black ml-7 btn-fav" >MY LIST+</button>`;
+    if(fav){
+        fav.addEventListener('click', addFav);
+
+    }
+
+    function addFav(e)  {
+        e.preventDefault();
+        if(e.target.classList.contains('btn-fav')) {
+            if(e.target.classList.contains('is-fav')) {
+                e.target.classList.remove('is-fav');
+                e.target.textContent='MY LIST+';
+                //console.log('removed')
+                removeFromLS(e.target.getAttribute('data-id'));
+
+            }else{
+                e.target.classList.add('is-fav');
+                e.target.textContent='MY LIST-';
+                //console.log('added');
+
+                const cardbody = e.target.parentElement;
+                const infoFav = {
+                    id : e.target.getAttribute('data-id'),
+                    title : cardbody.querySelector('.movie-name').textContent
+                }
+                console.log(infoFav)
+                //console.log(e.target.parentElement)
+                saveLS(infoFav);
+                
+            }
+        }
+    }
+
+    function saveLS(movie){
+        const movies = getfromLS();
+        movies.push(movie);
+        localStorage.setItem('movies', JSON.stringify(movies))
+
+    }
+
+
+    //Remove movie from lcoalStorage
+    function removeFromLS(id) {
+
+        const movies = getfromLS();
+        //loop
+        movies.forEach((movie, index) => {
+            if (id === movie.id) {
+                movies.splice(index, 1);
+            }
+        });
+        //set Array into localStorage
+        localStorage.setItem('movies', JSON.stringify(movies));
+    }
+    
+    function getfromLS(){
+        let movies;
+        if(localStorage.getItem('movies') === null){
+            movies =[]
+        } else{
+            movies = JSON.parse(localStorage.getItem('movies'));
+        } return movies;
+    }
 }
 
-const movieSeleced  = (id) => {
-    localStorage.setItem('MovieID', id);
-    window.location = 'favorite.html';
-    return false;
-
-}
-
-const getFav = () => {
-    const favMoiveChoice = localStorage.getItem('MovieID');
-
-    axios(`${movie_tr}${favMoiveChoice}?` + new URLSearchParams({
-        api_key : api_key
-    }))
-    .then(res => {
-        console.log(res.data);
-        const cardMovie = document.querySelector('.fav-container');
-        cardMovie.innerHTML +=`
-        <div class="moviebyId"> 
-            <img src="${imgUrl}${res.data.backdrop_path}" class="imgLikeThis"  alt="">
-            <p class="moive-title mb-10">${res.data.title}</p>
-        </div>
-        `;
-    })
-    .catch(err => console.log(err));
-}
 
 const formatString = (cureentInx , maxInx) => {
     return (cureentInx == maxInx - 1) ? '.' : ', ';

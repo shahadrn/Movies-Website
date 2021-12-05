@@ -9,11 +9,11 @@ axios(genresList + new URLSearchParams({
     api_key: api_key
 }))
     .then(res => {
+        console.log(`Our genres`,res.data)
         res.data.genres.forEach(item => {
             // to get Id, name for each genres
             axiosMoviesList(item.id, item.name);
-        }
-        )
+        })
     });
 
 
@@ -32,12 +32,8 @@ const axiosMoviesList = (id, genres) => {
     .catch(err => console.log(err));
 }
 
-const moviecategory = document.querySelector('.movie-category');
-const movieContainer = document.querySelector('.movieContainer')
 // categories section
 const makeCategories = (category, data) => {
-
-    
     main.innerHTML += `
     <div class="movie-list">
         <button class="pre-btn"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -58,8 +54,8 @@ const makeCategories = (category, data) => {
 
 }
 
-const makeCards = (id, data) => {
-    const movieContainer = document.getElementById(id);
+const makeCards = (idNmame, data) => {
+    const movieContainer = document.getElementById(idNmame);
     data.forEach((item, i) => {
         // if (localStorage.getItem('oviecard') == null){
         //     localStorage.setItem('oviecard', '[]');
