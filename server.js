@@ -9,7 +9,7 @@ dotenv.config();
 //to Check our port
 console.log(process.env.PORT);
 
-let initial_path = path.join(__dirname, "public");
+let initial_path = path.join(__dirname, "docs");
 
 let app = express();
 

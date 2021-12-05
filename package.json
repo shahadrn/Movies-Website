@@ -16,7 +16,7 @@
     "tailwindcss": "^2.2.19"
   },
   "scripts": {
-    "build:css": "tailwind build src/style.css -o public/css/style.css",
+    "build:css": "tailwind build src/style.css -o docs/css/style.css",
     "start": "nodemon server.js"
   },
   "keywords": [],
