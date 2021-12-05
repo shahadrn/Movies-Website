@@ -82,6 +82,7 @@ const movieInfobyId = (data) => {
         fav.addEventListener('click', addFav);
 
     }
+    isFav();
 
     function addFav(e)  {
         e.preventDefault();
@@ -130,6 +131,18 @@ const movieInfobyId = (data) => {
         });
         //set Array into localStorage
         localStorage.setItem('movies', JSON.stringify(movies));
+    }
+
+    function isFav(){
+        const movies = getfromLS();
+        movies.forEach(movie => {
+            let {id} = movie;
+            let favoritesMovies =  document.querySelector(`[data-id="${id}"]`);
+            if (favoritesMovies){
+                favoritesMovies.classList.add('is-fav');
+                favoritesMovies.textContent ='MY LIST-';
+            }
+        })
     }
     
     function getfromLS(){

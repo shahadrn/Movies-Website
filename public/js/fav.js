@@ -7,6 +7,8 @@ function getfromLS() {
     } return movies;
 }
 
+isFav();
+
 const favoritesTable = document.querySelector('#favorites');
 if (favoritesTable) {
     const movies = getfromLS();
@@ -32,17 +34,17 @@ function removeFavorites(element) {
 }
 
 
-// function isFav(){
-//     const movies = getfromLS();
-//     movies.forEach(movie => {
-//         let {id} = movie;
-//         let favoritesMovies =  document.querySelector(`[data-id=${id}]`);
-//         if (favoritesMovies){
-//             favoritesMovies.classList.add('is-fav');
-//             favoritesMovies.textContent ='MY LIST-';
-//         }
-//     })
-// }
+function isFav(){
+    const movies = getfromLS();
+    movies.forEach(movie => {
+        let {id} = movie;
+        let favoritesMovies =  document.querySelector(`[data-id="${id}"]`);
+        if (favoritesMovies){
+            favoritesMovies.classList.add('is-fav');
+            favoritesMovies.textContent ='MY LIST-';
+        }
+    })
+}
 
 //Remove movie from lcoalStorage
 function removeFromLS(id) {
@@ -67,8 +69,8 @@ function displayFavorites(favorites) {
         tr.innerHTML = `
         <td class="p-2 md:border md:border-gray-500">${movie.title}</td>
         <td class="p-2 md:border md:border-gray-500">
-        <button class="bg-black text-white py-1 px-2 rounded my-1 w-28 data-id="${movie.id}"  onclick="location.href = '/${movie.id}' ">link</button>
-        <button class="bg-red-700 text-white my-1 w-28 py-1 px-2 rounded remove-movie" data-id="${movie.id}">Remove</button>
+            <button class="bg-black text-white py-1 px-2 rounded my-1 w-28 data-id="${movie.id}"  onclick="location.href = '/${movie.id}' ">link</button>
+            <button class="bg-red-700 text-white my-1 w-28 py-1 px-2 rounded remove-movie" data-id="${movie.id}">Remove</button>
         </td>`;
         favoritesTable.appendChild(tr);
     });
