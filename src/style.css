@@ -71,9 +71,6 @@
       @apply  h-full flex flex-col justify-end text-gray-900 pt-56 bg-gradient-to-r from-black
   }
 
-  /* .conInfo {
-      @apply bg-black opacity-30 p-4 rounded
-  } */
   .movie-name {
       @apply text-4xl font-bold ml-7 text-white
   }
@@ -108,7 +105,7 @@ h3 {
 
 
   iframe {
-    @apply flex-1 h-96 w-full  mt-2 p-2 
+    @apply flex-1 h-64 w-full  mt-2 p-2 
   }
 
   .recommendation {
@@ -128,10 +125,10 @@ h3 {
         @apply  relative rounded-md w-96 h-52 
     }
     .moviebyId p {
-        @apply absolute pb-2 h-8 rounded-md leading-7 text-center w-96 font-semibold
+        @apply absolute pb-2 h-8 rounded-t-md leading-7 text-center w-96 font-semibold
     }
     .moviebyId:hover p {
-    @apply absolute pb-2 h-8 rounded-md leading-7 text-white bg-black bg-opacity-20 text-center w-96 font-semibold
+    @apply absolute pb-2 h-8 rounded-t-md  leading-7 text-white bg-black bg-opacity-20 text-center w-96 font-semibold
     }
   
 
