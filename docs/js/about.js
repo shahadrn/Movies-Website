@@ -27,7 +27,7 @@ const movieInfobyId = (data) => {
     const backdrop = document.querySelector('.movie-info');
     const vote = document.querySelector('.vote');
 
-    title.textContent = movieName.innerHTML = data.title; // to change Title based on the user's choice
+    title.textContent = movieName.textContent = data.title; // to change Title based on the user's choice
 
     var today = new Date();
     var year = today.getFullYear();
@@ -66,13 +66,6 @@ const movieInfobyId = (data) => {
 
     backdrop.style.backgroundImage= `url(${original_imgUrl}${data.backdrop_path})`;
 
-    // const fav = document.querySelector('.addFav');
-    // fav.addEventListener('click' , () => {
-    
-    // fav.innerHTML = `<button type="button" onclick="movieSeleced(${data.id})">MY LIST+</button>`;
-    // })
-
-    
 
 
     const fav = document.querySelector('.addFav');    
@@ -82,7 +75,7 @@ const movieInfobyId = (data) => {
         fav.addEventListener('click', addFav);
 
     }
-    isFav();
+    
 
     function addFav(e)  {
         e.preventDefault();
@@ -92,6 +85,7 @@ const movieInfobyId = (data) => {
                 e.target.textContent='MY LIST+';
                 //console.log('removed')
                 removeFromLS(e.target.getAttribute('data-id'));
+                //To allow the user to undo 
 
             }else{
                 e.target.classList.add('is-fav');
@@ -110,6 +104,7 @@ const movieInfobyId = (data) => {
             }
         }
     }
+    isFav();
 
     function saveLS(movie){
         const movies = getfromLS();
